@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nav-controller">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21701"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!-- Navigation Controller -->
+        <scene sceneID="nav-scene">
+            <objects>
+                <navigationController id="nav-controller" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nav-bar">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="main-vc" kind="relationship" relationship="rootViewController" id="root-segue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nav-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-726" y="4"/>
+        </scene>
+
+        <!-- Repository List View Controller -->
+        <scene sceneID="main-scene">
+            <objects>
+                <viewController id="main-vc" customClass="RepositoryListViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="main-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <!-- Collection View for Featured Repositories -->
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="featured-collection">
+                                <rect key="frame" x="0.0" y="103" width="393" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="collection-height"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="16" minimumInteritemSpacing="16" id="collection-layout">
+                                    <size key="itemSize" width="160" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="10" maxX="16" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeaturedRepoCell" id="featured-cell" customClass="FeaturedRepositoryCell" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="10" width="160" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="featured-content">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="featured-avatar">
+                                                    <rect key="frame" x="40" y="16" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="featured-avatar-width"/>
+                                                        <constraint firstAttribute="height" constant="80" id="featured-avatar-height"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="featured-name">
+                                                    <rect key="frame" x="8" y="104" width="144" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="featured-desc">
+                                                    <rect key="frame" x="8" y="131.33333333333334" width="144" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstItem="featured-avatar" firstAttribute="centerX" secondItem="featured-content" secondAttribute="centerX" id="featured-avatar-centerX"/>
+                                                <constraint firstItem="featured-avatar" firstAttribute="top" secondItem="featured-content" secondAttribute="top" constant="16" id="featured-avatar-top"/>
+                                                <constraint firstItem="featured-name" firstAttribute="top" secondItem="featured-avatar" secondAttribute="bottom" constant="8" id="featured-name-top"/>
+                                                <constraint firstItem="featured-name" firstAttribute="leading" secondItem="featured-content" secondAttribute="leading" constant="8" id="featured-name-leading"/>
+                                                <constraint firstAttribute="trailing" secondItem="featured-name" secondAttribute="trailing" constant="8" id="featured-name-trailing"/>
+                                                <constraint firstItem="featured-desc" firstAttribute="top" secondItem="featured-name" secondAttribute="bottom" constant="8" id="featured-desc-top"/>
+                                                <constraint firstItem="featured-desc" firstAttribute="leading" secondItem="featured-content" secondAttribute="leading" constant="8" id="featured-desc-leading"/>
+                                                <constraint firstAttribute="trailing" secondItem="featured-desc" secondAttribute="trailing" constant="8" id="featured-desc-trailing"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="featured-avatar" id="featured-avatar-outlet"/>
+                                            <outlet property="descriptionLabel" destination="featured-desc" id="featured-desc-outlet"/>
+                                            <outlet property="nameLabel" destination="featured-name" id="featured-name-outlet"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+
+                            <!-- Table View for Repository List -->
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="repo-table">
+                                <rect key="frame" x="0.0" y="303" width="393" height="549"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryCell" rowHeight="100" id="repo-cell" customClass="RepositoryCell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="repo-cell" id="cell-content">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="cell-stack">
+                                                    <rect key="frame" x="16" y="12" width="361" height="76"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cell-avatar">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="cell-avatar-width"/>
+                                                                <constraint firstAttribute="height" constant="50" id="cell-avatar-height"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cell-text-stack">
+                                                            <rect key="frame" x="62" y="0.0" width="299" height="76"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cell-name">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="299" height="19.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cell-desc">
+                                                                    <rect key="frame" x="0.0" y="23.333333333333336" width="299" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="commits-stack">
+                                                                    <rect key="frame" x="0.0" y="44.333333333333336" width="299" height="31.666666666666664"/>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cell-stack" firstAttribute="leading" secondItem="cell-content" secondAttribute="leading" constant="16" id="cell-stack-leading"/>
+                                                <constraint firstAttribute="trailing" secondItem="cell-stack" secondAttribute="trailing" constant="16" id="cell-stack-trailing"/>
+                                                <constraint firstItem="cell-stack" firstAttribute="top" secondItem="cell-content" secondAttribute="top" constant="12" id="cell-stack-top"/>
+                                                <constraint firstAttribute="bottom" secondItem="cell-stack" secondAttribute="bottom" constant="12" id="cell-stack-bottom"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="cell-avatar" id="cell-avatar-outlet"/>
+                                            
+
+<outlet property="commitsStackView" destination="commits-stack" id="commits-stack-outlet"/>
+                                            <outlet property="descriptionLabel" destination="cell-desc" id="cell-desc-outlet"/>
+                                            <outlet property="nameLabel" destination="cell-name" id="cell-name-outlet"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+
+                            <!-- Loading Indicator -->
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="loading-indicator">
+                                <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="safe-area"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <!-- Collection View Constraints -->
+                            <constraint firstItem="featured-collection" firstAttribute="top" secondItem="safe-area" secondAttribute="top" id="collection-top"/>
+                            <constraint firstItem="featured-collection" firstAttribute="leading" secondItem="safe-area" secondAttribute="leading" id="collection-leading"/>
+                            <constraint firstItem="safe-area" firstAttribute="trailing" secondItem="featured-collection" secondAttribute="trailing" id="collection-trailing"/>
+                            
+                            <!-- Table View Constraints -->
+                            <constraint firstItem="repo-table" firstAttribute="top" secondItem="featured-collection" secondAttribute="bottom" id="table-top"/>
+                            <constraint firstItem="repo-table" firstAttribute="leading" secondItem="safe-area" secondAttribute="leading" id="table-leading"/>
+                            <constraint firstItem="safe-area" firstAttribute="trailing" secondItem="repo-table" secondAttribute="trailing" id="table-trailing"/>
+                            <constraint firstItem="safe-area" firstAttribute="bottom" secondItem="repo-table" secondAttribute="bottom" id="table-bottom"/>
+                            
+                            <!-- Loading Indicator Constraints -->
+                            <constraint firstItem="loading-indicator" firstAttribute="centerX" secondItem="main-view" secondAttribute="centerX" id="loading-centerX"/>
+                            <constraint firstItem="loading-indicator" firstAttribute="centerY" secondItem="main-view" secondAttribute="centerY" id="loading-centerY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="GitHub Repositories" id="nav-item">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="refresh-button" style="plain">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="main-vc" id="refresh-action"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="featured-collection" id="collection-outlet"/>
+                        <outlet property="loadingIndicator" destination="loading-indicator" id="loading-outlet"/>
+                        <outlet property="tableView" destination="repo-table" id="table-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="main-responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="4"/>
+        </scene>
+
+        <!-- Repository Detail View Controller -->
+        <scene sceneID="detail-scene">
+            <objects>
+                <viewController storyboardIdentifier="RepositoryDetailViewController" id="detail-vc" customClass="RepositoryDetailViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="detail-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <!-- Dimmed Background -->
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dimmed-bg">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tap-gesture" appends="YES" id="tap-connection"/>
+                                </connections>
+                            </view>
+                            
+                            <!-- Detail Content View -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="detail-container">
+                                <rect key="frame" x="0.0" y="252" width="393" height="600"/>
+                                <subviews>
+                                    <!-- Drag Handle -->
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drag-handle">
+                                        <rect key="frame" x="171.66666666666666" y="8" width="50" height="4"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="handle-width"/>
+                                            <constraint firstAttribute="height" constant="4" id="handle-height"/>
+                                        </constraints>
+                                    </view>
+                                    
+                                    <!-- Content Scroll View -->
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="detail-scroll">
+                                        <rect key="frame" x="0.0" y="20" width="393" height="580"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="detail-stack">
+                                                <rect key="frame" x="16" y="16" width="361" height="300"/>
+                                                <!-- The height will be determined by the content -->
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="detail-stack" firstAttribute="leading" secondItem="detail-scroll" secondAttribute="leading" constant="16" id="stack-leading"/>
+                                            <constraint firstItem="detail-stack" firstAttribute="top" secondItem="detail-scroll" secondAttribute="top" constant="16" id="stack-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="detail-stack" secondAttribute="trailing" constant="16" id="stack-trailing"/>
+                                            <constraint firstAttribute="bottom" secondItem="detail-stack" secondAttribute="bottom" constant="16" id="stack-bottom"/>
+                                            <constraint firstItem="detail-stack" firstAttribute="width" secondItem="detail-scroll" secondAttribute="width" constant="-32" id="stack-width"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="container-height"/>
+                                    <constraint firstItem="drag-handle" firstAttribute="top" secondItem="detail-container" secondAttribute="top" constant="8" id="handle-top"/>
+                                    <constraint firstItem="drag-handle" firstAttribute="centerX" secondItem="detail-container" secondAttribute="centerX" id="handle-centerX"/>
+                                    <constraint firstItem="detail-scroll" firstAttribute="top" secondItem="drag-handle" secondAttribute="bottom" constant="8" id="scroll-top"/>
+                                    <constraint firstItem="detail-scroll" firstAttribute="leading" secondItem="detail-container" secondAttribute="leading" id="scroll-leading"/>
+                                    <constraint firstAttribute="trailing" secondItem="detail-scroll" secondAttribute="trailing" id="scroll-trailing"/>
+                                    <constraint firstAttribute="bottom" secondItem="detail-scroll" secondAttribute="bottom" id="scroll-bottom"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pan-gesture" appends="YES" id="pan-connection"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="detail-safe-area"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dimmed-bg" firstAttribute="top" secondItem="detail-view" secondAttribute="top" id="bg-top"/>
+                            <constraint firstAttribute="bottom" secondItem="dimmed-bg" secondAttribute="bottom" id="bg-bottom"/>
+                            <constraint firstItem="dimmed-bg" firstAttribute="leading" secondItem="detail-view" secondAttribute="leading" id="bg-leading"/>
+                            <constraint firstAttribute="trailing" secondItem="dimmed-bg" secondAttribute="trailing" id="bg-trailing"/>
+                            
+                            <constraint firstItem="detail-container" firstAttribute="leading" secondItem="detail-safe-area" secondAttribute="leading" id="container-leading"/>
+                            <constraint firstItem="detail-safe-area" firstAttribute="trailing" secondItem="detail-container" secondAttribute="trailing" id="container-trailing"/>
+                            <constraint firstAttribute="bottom" secondItem="detail-container" secondAttribute="bottom" id="container-bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="detail-container" id="container-outlet"/>
+                        <outlet property="containerViewHeightConstraint" destination="container-height" id="height-constraint-outlet"/>
+                        <outlet property="dimmedBackgroundView" destination="dimmed-bg" id="bg-outlet"/>
+                        <outlet property="stackView" destination="detail-stack" id="stack-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="detail-responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tap-gesture">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="detail-vc" id="tap-action"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="pan-gesture">
+                    <connections>
+                        <action selector="handlePanGesture:" destination="detail-vc" id="pan-action"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="892" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="128" height="117"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
